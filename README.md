@@ -1,6 +1,6 @@
 # eksisozluk entries
 ## Kullanmak için `requests`, `lxml` ve `BeautifulSoup4` kütüphanelerini yüklemeniz gerekmekte.
-> Bunun için cmd'ye(eğer yüklüyse burayı geçin):
+> Bunun için cmd'ye (eğer yüklüyse burayı geçin):
 ```sh
 pip install requests
 pip install lxml
