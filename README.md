@@ -1,2 +1,3 @@
-# eksisozluk_entries-
-entry okuma, gündemi görme
+# eksisozluk_entries
+
+Kullanmak için eksisozluk.py dosyasının sonuna eksi() fonksiyonunu çağırmanız yeterlidir.
