@@ -16,7 +16,6 @@ def eksi():
                 search = "https://eksisozluk.com/?q="
                 num = 1
                 page = 1
-                otherpage = False
                 url = search + q
                 r = requests.get(url, headers=headers)
                 source = BeautifulSoup(r.content, "lxml")
