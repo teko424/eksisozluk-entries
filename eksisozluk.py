@@ -130,6 +130,3 @@ def eksi():
                 break
         except requests.exceptions.ConnectionError:
             print("bağlantınızı kontrol edin")
-
-
-eksi()
