@@ -1,5 +1,5 @@
 # eksisozluk entries
-## To use it, you need to install `requests`, `lxml` and `BeautifulSoup4` libraries.
+## To use it, you need to install the `requests`, `lxml` and `BeautifulSoup4` libraries.
 > Type these below in cmd(if you have, ignore this part):
 ```sh
 pip install requests
