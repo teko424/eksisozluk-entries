@@ -45,7 +45,7 @@ def eksi():
                     for date in dates:
                         datelist.append(date)
                     if nicknum < 11:
-                        print(f"\n, {num} -) {entry.text}  \n {datelist[nicknum].text} "
+                        print(f"\n {num} -) {entry.text}  \n {datelist[nicknum].text} "
                               f"\n\n - {nicklist[nicknum].text} -")
                         if len(entry.text) <= c_range:
                             print("—" * len(entry.text))
@@ -113,7 +113,7 @@ def eksi():
                                 for date in dates:
                                     datelist.append(date)
                                 if nicknum < 11:
-                                    print(f"\n, {num} -) {entry.text}  \n {datelist[nicknum].text} "
+                                    print(f"\n {num} -) {entry.text}  \n {datelist[nicknum].text} "
                                           f"\n\n - {nicklist[nicknum].text} -")
                                     if len(entry.text) <= c_range:
                                         print("—" * len(entry.text))
