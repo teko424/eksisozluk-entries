@@ -45,15 +45,15 @@ def eksi():
                     for date in dates:
                         datelist.append(date)
                     if nicknum < 11:
-                        print("\n", num, "-)", entry.text + "\n",
-                              datelist[nicknum].text, "\n", "\n", "-", nicklist[nicknum].text, "-")
+                        print(f"\n, {num} -) {entry.text}  \n {datelist[nicknum].text} "
+                              f"\n\n - {nicklist[nicknum].text} -")
                         if len(entry.text) <= c_range:
                             print("—" * len(entry.text))
                         else:
                             print("—" * c_range)
                         nicknum += 1
                     num += 1
-                print("\nsayfa numarası: ", page, "\n", pagecount, "sayfa mevcut")
+                print(f"\nsayfa numarası: {page} \n {pagecount} sayfa mevcut")
                 otherpage = True
                 while otherpage:
                     qa = input("""\nsonraki sayfaya geçmek içn (+) girin\n---------
@@ -113,15 +113,15 @@ def eksi():
                                 for date in dates:
                                     datelist.append(date)
                                 if nicknum < 11:
-                                    print("\n", num, "-)", entry.text + "\n", datelist[nicknum].text,
-                                          "\n", "\n", "-", nicklist[nicknum].text, "-")
+                                    print(f"\n, {num} -) {entry.text}  \n {datelist[nicknum].text} "
+                                          f"\n\n - {nicklist[nicknum].text} -")
                                     if len(entry.text) <= c_range:
                                         print("—" * len(entry.text))
                                     else:
                                         print("—" * c_range)
                                     nicknum += 1
                                 num += 1
-                        print("\nsayfa numarası: ", page, "\n", pagecount, "sayfa mevcut")
+                        print(f"\nsayfa numarası:  {page}\n {pagecount} sayfa mevcut")
                     else:
                         for title in entries:
                             print(title.text)
