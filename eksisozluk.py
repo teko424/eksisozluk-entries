@@ -39,9 +39,9 @@ def eksi():
                 else:
                     pagecount = 1
                 print("\n", header.text)
+                [nicklist.append(nick.text) for nick in nicks]
+                [datelist.append(date.text) for date in dates]
                 for entry in entries:
-                    [nicklist.append(nick.text) for nick in nicks]
-                    [datelist.append(date.text) for date in dates]
                     if nicknum <= 10:
                         print(f"\n {num} -) {entry.text}  \n {datelist[nicknum]} "
                               f"\n\n - {nicklist[nicknum]} -")
@@ -105,9 +105,9 @@ def eksi():
                     datelist = []
                     print("\n", header.text)
                     if qa != "*":
-                        for entry in entries:
-                                [nicklist.append(nick.text) for nick in nicks]
-                                [datelist.append(date.text) for date in dates]
+                        [nicklist.append(nick.text) for nick in nicks]
+                        [datelist.append(date.text) for date in dates]
+                        for entry in entries:      
                                 if nicknum <= 10:
                                     print(f"\n {num} -) {entry.text}  \n {datelist[nicknum]} "
                                           f"\n\n - {nicklist[nicknum]} -")
