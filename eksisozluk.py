@@ -40,20 +40,18 @@ def eksi():
                     pagecount = 1
                 print("\n", header.text)
                 for entry in entries:
-                    for nick in nicks:
-                        nicklist.append(nick)
-                    for date in dates:
-                        datelist.append(date)
-                    if nicknum < 11:
-                        print(f"\n {num} -) {entry.text}  \n {datelist[nicknum].text} "
-                              f"\n\n - {nicklist[nicknum].text} -")
+                    [nicklist.append(nick.text) for nick in nicks]
+                    [datelist.append(date.text) for date in dates]
+                    if nicknum <= 10:
+                        print(f"\n {num} -) {entry.text}  \n {datelist[nicknum]} "
+                              f"\n\n - {nicklist[nicknum]} -")
                         if len(entry.text) <= c_range:
                             print("—" * len(entry.text))
                         else:
                             print("—" * c_range)
                         nicknum += 1
                     num += 1
-                print(f"\nsayfa numarası: {page} \n {pagecount} sayfa mevcut")
+                print(f"\nsayfa numarası: {page}\n{pagecount} sayfa mevcut")
                 otherpage = True
                 while otherpage:
                     qa = input("""\nsonraki sayfaya geçmek içn (+) girin\n---------
@@ -108,20 +106,18 @@ def eksi():
                     print("\n", header.text)
                     if qa != "*":
                         for entry in entries:
-                                for nick in nicks:
-                                    nicklist.append(nick)
-                                for date in dates:
-                                    datelist.append(date)
-                                if nicknum < 11:
-                                    print(f"\n {num} -) {entry.text}  \n {datelist[nicknum].text} "
-                                          f"\n\n - {nicklist[nicknum].text} -")
+                                [nicklist.append(nick.text) for nick in nicks]
+                                [datelist.append(date.text) for date in dates]
+                                if nicknum <= 10:
+                                    print(f"\n {num} -) {entry.text}  \n {datelist[nicknum]} "
+                                          f"\n\n - {nicklist[nicknum]} -")
                                     if len(entry.text) <= c_range:
                                         print("—" * len(entry.text))
                                     else:
                                         print("—" * c_range)
                                     nicknum += 1
                                 num += 1
-                        print(f"\nsayfa numarası:  {page}\n {pagecount} sayfa mevcut")
+                        print(f"\nsayfa numarası: {page}\n{pagecount} sayfa mevcut")
                     else:
                         for title in entries:
                             print(title.text)
