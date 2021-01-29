@@ -1,10 +1,3 @@
 # eksisozluk entries
-## Kullanmak için `requests`, `lxml` ve `BeautifulSoup4` kütüphanelerini yüklemeniz gerekmekte.
-> Bunun için cmd'ye (eğer yüklüyse burayı geçin):
-```sh
-pip install requests
-pip install lxml
-pip install BeautifulSoup4
-```
-> yazın.
-## Bunları yükledikten sonra dosyayı çalıştırmanız yeterlidir.
+## Kullanmak için `requests`, `lxml` ve `BeautifulSoup4` kütüphaneleri gereklidir.
+> Programı çalıştırdığınızda bunları kendi yükler.
