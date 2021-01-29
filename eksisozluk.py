@@ -121,3 +121,7 @@ def eksi():
                 break
         except requests.exceptions.ConnectionError:
             print("bağlantınızı kontrol edin")
+
+            
+if __name__ == "__main__":
+    eksi()
