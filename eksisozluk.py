@@ -12,7 +12,6 @@ except ImportError or ModuleNotFoundError:
     packages = ["requests", "BeautifulSoup4", "lxml"]
     for package in packages:
         check_call(["pip", "install", package])
-    print("başarıyla yüklendi")
     os.execv(sys.executable, ["python"] + sys.argv)
 
 
@@ -135,7 +134,6 @@ def eksi():
         except bs4.FeatureNotFound:
             print("lxml bulunamadı\nyükleniyor")
             check_call(["pip", "install", "lxml"])
-            print("başarıyla yüklendi")
             os.execv(sys.executable, ["python"] + sys.argv)
         except requests.exceptions.ConnectionError:
             print("bağlantınızı kontrol edin")
