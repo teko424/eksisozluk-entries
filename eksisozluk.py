@@ -51,8 +51,7 @@ def eksi():
                     nicknum += 1
                     num += 1
                 print(f"\nsayfa numarası: {page}\n{pagecount} sayfa mevcut")
-                otherpage = True
-                while otherpage:
+                while 1:
                     qa = input("""\nsonraki sayfaya geçmek içn (+) girin\n---------
                     \ngeri gitmek için (-) girin\n---------
                     \nsayfa numarası için bir sayı girin\n---------
@@ -83,8 +82,7 @@ def eksi():
                         page -= 1
                         page = int(pagecount)
                     else:
-                        otherpage = False
-                        continue
+                        break
                     num = 1
                     pageurl = "?p=" + str(page)
                     urls = url+pageurl
