@@ -25,7 +25,6 @@ def eksi():
             if q:
                 headers = ""
                 search = "https://eksisozluk.com/?q="
-                num = 1
                 page = 1
                 url = search + q
                 r = requests.get(url, headers=headers)
@@ -39,10 +38,10 @@ def eksi():
                     print("böyle bir şey yok. ama olabilir de.")
                     continue
                 dates = source.find_all("a", attrs={"class": "entry-date permalink"})
-                datelist = []
+                date_list = []
                 nicks = source.find_all("a", attrs={"class": "entry-author"})
-                nicklist = []
-                nicknum = 0
+                nick_list = []
+                nd_num = 0
                 if len(entries) == 10:
                     pagecount = source.find("div", {"data-currentpage": str(page)})
                     pagecount = \
@@ -51,17 +50,16 @@ def eksi():
                 else:
                     pagecount = 1
                 print("\n", header.text)
-                [nicklist.append(nick.text) for nick in nicks]
-                [datelist.append(date.text) for date in dates]
-                for entry in entries:
-                    print(f"\n {num} -) {entry.text}  \n {datelist[nicknum]} "
-                          f"\n\n - {nicklist[nicknum]} -")
+                [nick_list.append(nick.text) for nick in nicks]
+                [date_list.append(date.text) for date in dates]
+                for num, entry in enumerate(entries, start=1):
+                    print(f"\n {num} -) {entry.text}  \n {date_list[nd_num]} "
+                          f"\n\n - {nick_list[nd_num]} -")
                     if len(entry.text) <= c_range:
                         print("—" * len(entry.text))
                     else:
                         print("—" * c_range)
-                    nicknum += 1
-                    num += 1
+                    nd_num += 1
                 print(f"\nsayfa numarası: {page}\n{pagecount} sayfa mevcut")
                 while 1:
                     qa = input("""\nsonraki sayfaya geçmek içn (+) girin\n---------
@@ -95,7 +93,6 @@ def eksi():
                         page = int(pagecount)
                     else:
                         break
-                    num = 1
                     pageurl = "?p=" + str(page)
                     urls = url + pageurl
                     r = requests.get(urls, headers=headers)
@@ -108,23 +105,22 @@ def eksi():
                             print("entry kalmadı.\nbaşka bir başlık aratabilirsiniz.")
                             continue
                     nicks = source.find_all("a", attrs={"class": "entry-author"})
-                    nicklist = []
-                    nicknum = 0
+                    nick_list = []
                     dates = source.find_all("a", attrs={"class": "entry-date permalink"})
-                    datelist = []
+                    date_list = []
+                    nd_num = 0
                     print("\n", header.text)
                     if qa != "*":
-                        [nicklist.append(nick.text) for nick in nicks]
-                        [datelist.append(date.text) for date in dates]
-                        for entry in entries:
-                            print(f"\n {num} -) {entry.text}  \n {datelist[nicknum]} "
-                                  f"\n\n - {nicklist[nicknum]} -")
+                        [nick_list.append(nick.text) for nick in nicks]
+                        [date_list.append(date.text) for date in dates]
+                        for num, entry in enumerate(entries, start=1):
+                            print(f"\n {num} -) {entry.text}  \n {date_list[nd_num]} "
+                                  f"\n\n - {nick_list[nd_num]} -")
                             if len(entry.text) <= c_range:
                                 print("—" * len(entry.text))
                             else:
                                 print("—" * c_range)
-                            nicknum += 1
-                            num += 1
+                            nd_num += 1
                         print(f"\nsayfa numarası: {page}\n{pagecount} sayfa mevcut")
                     else:
                         for title in entries:
