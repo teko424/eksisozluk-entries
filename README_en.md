@@ -6,4 +6,4 @@ pip install requests
 pip install lxml
 pip install BeautifulSoup4
 ```
-## After you installed them, just call the `eksi()` function at the end of the file "eksisozluk.py".
+## After you installed them, just run the file "eksisozluk.py".
