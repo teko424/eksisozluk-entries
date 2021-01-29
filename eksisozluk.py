@@ -1,7 +1,20 @@
-#kullanıcı arama, entry sıra numarası özelliği getirilecek
+# kullanıcı arama, entry sıra numarası özelliği getirilecek
 
-import requests
-from bs4 import BeautifulSoup
+import os
+import sys
+from subprocess import check_call
+
+try:
+    import requests
+    import bs4
+except ImportError or ModuleNotFoundError:
+    print("bir veya daha fazla modül bulunamadı")
+    print("yükleniyor")
+    packages = ["requests", "BeautifulSoup4", "lxml"]
+    for package in packages:
+        check_call(["pip", "install", package])
+    print("başarıyla yüklendi")
+    os.execv(sys.executable, ["python"] + sys.argv)
 
 
 def eksi():
@@ -18,11 +31,11 @@ def eksi():
                 page = 1
                 url = search + q
                 r = requests.get(url, headers=headers)
-                source = BeautifulSoup(r.content, "lxml")
+                source = bs4.BeautifulSoup(r.content, "lxml")
                 header = source.title
                 link = source.find("a", attrs={"itemprop": "url"}).get("href")
                 search = "https://eksisozluk.com"
-                url = search+link
+                url = search + link
                 entries = source.find_all("div", attrs={"class": "content"})
                 if not entries:
                     print("böyle bir şey yok. ama olabilir de.")
@@ -34,14 +47,15 @@ def eksi():
                 nicknum = 0
                 if len(entries) == 10:
                     pagecount = source.find("div", {"data-currentpage": str(page)})
-                    pagecount = str(pagecount)[str(pagecount).find("data-pagecount"):str(pagecount).find(">")].split("=")[1]
+                    pagecount = \
+                        str(pagecount)[str(pagecount).find("data-pagecount"):str(pagecount).find(">")].split("=")[1]
                     pagecount = pagecount.strip("\"")
                 else:
                     pagecount = 1
                 print("\n", header.text)
                 [nicklist.append(nick.text) for nick in nicks]
                 [datelist.append(date.text) for date in dates]
-                for entry in entries:    
+                for entry in entries:
                     print(f"\n {num} -) {entry.text}  \n {datelist[nicknum]} "
                           f"\n\n - {nicklist[nicknum]} -")
                     if len(entry.text) <= c_range:
@@ -85,9 +99,9 @@ def eksi():
                         break
                     num = 1
                     pageurl = "?p=" + str(page)
-                    urls = url+pageurl
+                    urls = url + pageurl
                     r = requests.get(urls, headers=headers)
-                    source = BeautifulSoup(r.content, "lxml")
+                    source = bs4.BeautifulSoup(r.content, "lxml")
                     if qa == "*":
                         entries = source.find_all("ul", attrs={"class": "topic-list partial"})
                     else:
@@ -105,23 +119,28 @@ def eksi():
                         [nicklist.append(nick.text) for nick in nicks]
                         [datelist.append(date.text) for date in dates]
                         for entry in entries:
-                                print(f"\n {num} -) {entry.text}  \n {datelist[nicknum]} "
-                                      f"\n\n - {nicklist[nicknum]} -")
-                                if len(entry.text) <= c_range:
-                                    print("—" * len(entry.text))
-                                else:
-                                    print("—" * c_range)
-                                nicknum += 1
-                                num += 1
+                            print(f"\n {num} -) {entry.text}  \n {datelist[nicknum]} "
+                                  f"\n\n - {nicklist[nicknum]} -")
+                            if len(entry.text) <= c_range:
+                                print("—" * len(entry.text))
+                            else:
+                                print("—" * c_range)
+                            nicknum += 1
+                            num += 1
                         print(f"\nsayfa numarası: {page}\n{pagecount} sayfa mevcut")
                     else:
                         for title in entries:
                             print(title.text)
             else:
                 break
+        except bs4.FeatureNotFound:
+            print("lxml bulunamadı\nyükleniyor")
+            check_call(["pip", "install", "lxml"])
+            print("başarıyla yüklendi")
+            os.execv(sys.executable, ["python"] + sys.argv)
         except requests.exceptions.ConnectionError:
             print("bağlantınızı kontrol edin")
 
-            
+
 if __name__ == "__main__":
     eksi()
