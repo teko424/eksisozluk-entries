@@ -7,4 +7,4 @@ pip install lxml
 pip install BeautifulSoup4
 ```
 > yazın.
-## Bunları yükledikten sonra "eksisozluk.py" dosyasının sonuna `eksi()` fonksiyonunu çağırmanız yeterlidir.
+## Bunları yükledikten sonra dosyayı çalıştırmanız yeterlidir.
