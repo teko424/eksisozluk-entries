@@ -8,8 +8,7 @@ try:
     import requests
     import bs4
 except ImportError or ModuleNotFoundError:
-    print("bir veya daha fazla modül bulunamadı")
-    print("yükleniyor")
+    print("bir veya daha fazla modül bulunamadı\nyükleniyor")
     packages = ["requests", "BeautifulSoup4", "lxml"]
     for package in packages:
         check_call(["pip", "install", package])
