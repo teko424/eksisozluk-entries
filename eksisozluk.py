@@ -41,7 +41,7 @@ def eksi():
                 nicks = source.find_all("a", attrs={"class": "entry-author"})
                 nick_list = []
                 nd_num = 0
-                if len(entries) == 10:
+                if len(entries) >= 10:
                     pagecount = source.find("div", {"data-currentpage": str(page)})
                     pagecount = \
                         str(pagecount)[str(pagecount).find("data-pagecount"):str(pagecount).find(">")].split("=")[1]
